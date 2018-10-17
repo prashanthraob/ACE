@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="1" total="5" passed="4">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="2001490" started-at="2018-08-28T10:28:29Z" finished-at="2018-08-28T11:01:50Z">
+    <groups>
+      <group name="cucumber">
+        <method signature="TestNgTestRunner.feature(cucumber.api.testng.CucumberFeatureWrapper)[pri:0, instance:testRunners.TestNgTestRunner@71318ec4]" name="feature" class="testRunners.TestNgTestRunner"/>
+      </group> <!-- cucumber -->
+    </groups>
+    <test name="Default test" duration-ms="2001490" started-at="2018-08-28T10:28:29Z" finished-at="2018-08-28T11:01:50Z">
+      <class name="testRunners.TestNgTestRunner">
+        <test-method status="PASS" signature="readInputData()[pri:0, instance:testRunners.TestNgTestRunner@71318ec4]" name="readInputData" is-config="true" duration-ms="16" started-at="2018-08-28T15:58:29Z" finished-at="2018-08-28T15:58:29Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- readInputData -->
+        <test-method status="PASS" signature="setUpClass()[pri:0, instance:testRunners.TestNgTestRunner@71318ec4]" name="setUpClass" is-config="true" duration-ms="265" started-at="2018-08-28T15:58:29Z" finished-at="2018-08-28T15:58:29Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUpClass -->
+        <test-method status="PASS" signature="feature(cucumber.api.testng.CucumberFeatureWrapper)[pri:0, instance:testRunners.TestNgTestRunner@71318ec4]" name="feature" duration-ms="170122" started-at="2018-08-28T15:58:29Z" description="Runs Cucumber Feature" data-provider="features" finished-at="2018-08-28T16:01:19Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[Verify Benefit and Plan Scenarios]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- feature -->
+        <test-method status="PASS" signature="feature(cucumber.api.testng.CucumberFeatureWrapper)[pri:0, instance:testRunners.TestNgTestRunner@71318ec4]" name="feature" duration-ms="158877" started-at="2018-08-28T16:01:19Z" description="Runs Cucumber Feature" data-provider="features" finished-at="2018-08-28T16:03:58Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[Verify CostCalculator Scenarios]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- feature -->
+        <test-method status="FAIL" signature="feature(cucumber.api.testng.CucumberFeatureWrapper)[pri:0, instance:testRunners.TestNgTestRunner@71318ec4]" name="feature" duration-ms="451983" started-at="2018-08-28T16:03:58Z" description="Runs Cucumber Feature" data-provider="features" finished-at="2018-08-28T16:11:30Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[Verify Manage Alert Scenarios]]>
+              </value>
+            </param>
+          </params>
+          <exception class="cucumber.runtime.CucumberException">
+            <message>
+              <![CDATA[org.openqa.selenium.remote.SessionNotFoundException: Session ID is null. Using WebDriver after calling quit()?
+Build info: version: '2.45.0', revision: '5017cb8e7ca8e37638dc3091b2440b90a1d8686f', time: '2015-02-27 09:10:26'
+System info: host: 'USBLRAKNASHIKK1', ip: '192.168.31.222', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_171'
+Driver info: driver.version: RemoteWebDriver]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[cucumber.runtime.CucumberException: org.openqa.selenium.remote.SessionNotFoundException: Session ID is null. Using WebDriver after calling quit()?
+Build info: version: '2.45.0', revision: '5017cb8e7ca8e37638dc3091b2440b90a1d8686f', time: '2015-02-27 09:10:26'
+System info: host: 'USBLRAKNASHIKK1', ip: '192.168.31.222', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_171'
+Driver info: driver.version: RemoteWebDriver
+	at cucumber.api.testng.TestNGCucumberRunner.runCucumber(TestNGCucumberRunner.java:69)
+	at testRunners.TestNgTestRunner.feature(TestNgTestRunner.java:83)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:86)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:643)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:820)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1128)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:129)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:112)
+	at org.testng.TestRunner.privateRun(TestRunner.java:782)
+	at org.testng.TestRunner.run(TestRunner.java:632)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:366)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:361)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:319)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:268)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1244)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1169)
+	at org.testng.TestNG.run(TestNG.java:1064)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+Caused by: org.openqa.selenium.remote.SessionNotFoundException: Session ID is null. Using WebDriver after calling quit()?
+Build info: version: '2.45.0', revision: '5017cb8e7ca8e37638dc3091b2440b90a1d8686f', time: '2015-02-27 09:10:26'
+System info: host: 'USBLRAKNASHIKK1', ip: '192.168.31.222', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_171'
+Driver info: driver.version: RemoteWebDriver
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:125)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:66)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:572)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:622)
+	at org.openqa.selenium.remote.RemoteWebDriver.close(RemoteWebDriver.java:463)
+	at utils.WebDriverManager.closeDriver(WebDriverManager.java:44)
+	at stepDefinitions.functional.Hooks.afterScenario(Hooks.java:82)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at cucumber.runtime.Utils$1.call(Utils.java:40)
+	at cucumber.runtime.Timeout.timeout(Timeout.java:16)
+	at cucumber.runtime.Utils.invoke(Utils.java:34)
+	at cucumber.runtime.java.JavaHookDefinition.execute(JavaHookDefinition.java:60)
+	at cucumber.runtime.Runtime.runHookIfTagsMatch(Runtime.java:224)
+	at cucumber.runtime.Runtime.runHooks(Runtime.java:212)
+	at cucumber.runtime.Runtime.runAfterHooks(Runtime.java:206)
+	at cucumber.runtime.model.CucumberScenario.run(CucumberScenario.java:46)
+	at cucumber.runtime.model.CucumberFeature.run(CucumberFeature.java:165)
+	at cucumber.api.testng.TestNGCucumberRunner.runCucumber(TestNGCucumberRunner.java:63)
+	... 25 more
+]]>
+            </full-stacktrace>
+          </exception> <!-- cucumber.runtime.CucumberException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- feature -->
+        <test-method status="PASS" signature="feature(cucumber.api.testng.CucumberFeatureWrapper)[pri:0, instance:testRunners.TestNgTestRunner@71318ec4]" name="feature" duration-ms="405160" started-at="2018-08-28T16:11:30Z" description="Runs Cucumber Feature" data-provider="features" finished-at="2018-08-28T16:18:15Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[Verify Member Demographics scenarios on Member360 Page]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- feature -->
+        <test-method status="PASS" signature="feature(cucumber.api.testng.CucumberFeatureWrapper)[pri:0, instance:testRunners.TestNgTestRunner@71318ec4]" name="feature" duration-ms="814208" started-at="2018-08-28T16:18:15Z" description="Runs Cucumber Feature" data-provider="features" finished-at="2018-08-28T16:31:49Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[Verify Manage PCP scenarios]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- feature -->
+        <test-method status="PASS" signature="tearDownClass()[pri:0, instance:testRunners.TestNgTestRunner@71318ec4]" name="tearDownClass" is-config="true" duration-ms="769" started-at="2018-08-28T16:31:49Z" finished-at="2018-08-28T16:31:50Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDownClass -->
+      </class> <!-- testRunners.TestNgTestRunner -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
