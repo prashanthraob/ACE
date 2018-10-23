@@ -38,22 +38,32 @@ public class ContactSearchLib{
 	}
 
 	public void clickSearchButton() {
+		driver.switchTo().frame(contactSearchPage.frame_CustomerSearch);
 		contactSearchPage.btn_Search.click();
-	}
-	
-	public void clickNewContactButton() {
-		contactSearchPage.btn_NewContact.click();
-	}
-	
-	public void clickAddContactButton() {
-		contactSearchPage.btn_AddContact.click();
+		driver.switchTo().defaultContent();
 	}
 
-	public void verifyLastNameError(String firstName) {
+	public void clickNewContactButton() {
+		driver.switchTo().frame(contactSearchPage.frame_CustomerSearch);
+		contactSearchPage.btn_NewContact.click();
+		driver.switchTo().defaultContent();
+	}
+
+	public void clickAddContactButton() {
+		driver.switchTo().frame(contactSearchPage.frame_CustomerSearch);
+		contactSearchPage.btn_AddContact.click();
+		driver.switchTo().defaultContent();
+	}
+
+	public void enterOnlyFirstName(String firstName) {
 		driver.switchTo().frame(contactSearchPage.frame_CustomerSearch);
 		contactSearchPage.txtbox_LastName.clear();
 		this.enterFirstName(firstName);
-		this.clickSearchButton();
+		driver.switchTo().defaultContent();
+	}
+	
+	public void verifyLastNameError() {
+		driver.switchTo().frame(contactSearchPage.frame_CustomerSearch);
 		try {
 			if (contactSearchPage.error_LastName.getText() == "Please fill last name") {
 				System.out.println("Error Message for Last Name verified");
@@ -65,11 +75,15 @@ public class ContactSearchLib{
 		driver.switchTo().defaultContent();
 	}
 	
-	public void verifyContactsDisplayed(String firstName, String lastName) {
+	public void enterFirstAndLastName(String firstName, String lastName) {
 		driver.switchTo().frame(contactSearchPage.frame_CustomerSearch);
 		this.enterFirstName(firstName);
 		this.enterLastName(lastName);
-		this.clickSearchButton();
+		driver.switchTo().defaultContent();
+	}
+
+	public void verifyContactsDisplayed(String firstName, String lastName) {
+		driver.switchTo().frame(contactSearchPage.frame_CustomerSearch);
 		java.util.Iterator<WebElement> i = contactSearchPage.grid_Results.iterator();
 		while(i.hasNext()) {
 			WebElement fName = i.next();
@@ -87,37 +101,61 @@ public class ContactSearchLib{
 		}
 		driver.switchTo().defaultContent();
 	}
-	
-	public void verifyNewContact(String firstName, String lastName) {
+
+	public void verifyNewContactDisabled() {
+		driver.switchTo().frame(contactSearchPage.frame_CustomerSearch);
 		try {
-			driver.switchTo().frame(contactSearchPage.frame_CustomerSearch);
 			if(contactSearchPage.btn_NewContact.getAttribute("disabled").equals("true")) {
-				this.enterLastName(lastName);
-				this.clickSearchButton();
-				if(contactSearchPage.btn_NewContact.isEnabled()) {
-					this.clickNewContactButton();
-					Thread.sleep(5000);
-					this.enterFirstName(firstName);
-					this.enterLastName(lastName);
-					this.clickAddContactButton();
-				}else
-					throw new RuntimeException("Error: New Contact button not enabled after first search");
+				System.out.println("Add New Contact button is disabled");
 			}else
-				throw new RuntimeException("Error: New Contact button enabled before first search");
+				throw new RuntimeException("Error: Add New Contact button is not disabled on Page Load");
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
 		driver.switchTo().defaultContent();
 	}
+
+//	public void verifyNewContact(String firstName, String lastName) {
+//		try {
+//			driver.switchTo().frame(contactSearchPage.frame_CustomerSearch);
+//			if(contactSearchPage.btn_NewContact.getAttribute("disabled").equals("true")) {
+//				this.enterLastName(lastName);
+//				this.clickSearchButton();
+//				if(contactSearchPage.btn_NewContact.isEnabled()) {
+//					this.clickNewContactButton();
+//					Thread.sleep(5000);
+//					this.enterFirstName(firstName);
+//					this.enterLastName(lastName);
+//					this.clickAddContactButton();
+//				}else
+//					throw new RuntimeException("Error: New Contact button not enabled after first search");
+//			}else
+//				throw new RuntimeException("Error: New Contact button enabled before first search");
+//		}catch(Exception e) {
+//			e.printStackTrace();
+//		}
+//		driver.switchTo().defaultContent();
+//	}
 	
+	public void verifyNewContactEnabled() {
+		driver.switchTo().frame(contactSearchPage.frame_CustomerSearch);
+		if(contactSearchPage.btn_NewContact.isEnabled())
+			System.out.println("New contact button verified.");
+		else
+			throw new RuntimeException("Error: New Contact button not enabled after first search");
+		driver.switchTo().defaultContent();
+	}
+	
+
+
 	public void clickContactSearchTab() {
 		WebDriverWait wait = new WebDriverWait(driver, 60);
 		WebElement element = wait.until(ExpectedConditions.elementToBeClickable(contactSearchPage.tab_ContactSearch));
 		element.click();
 	}
-	
+
 	//Following login code is temporary and has to be rearranged to login page
-	
+
 	public void login() {
 		driver.get("https://login.salesforce.com");
 		driver.findElement(By.id("username")).sendKeys("dsaishankar@deloitte.com");
