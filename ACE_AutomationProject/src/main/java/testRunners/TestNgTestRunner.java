@@ -23,7 +23,8 @@ import utils.XlUtil;
 @CucumberOptions(
 		features = "src/main/java/Features/",
 		glue = {"stepDefinitions"},
-		tags = {"@exercise"},
+		tags = {"@Tc12"},
+		dryRun = false,
 		monochrome=true,
 		format = {
 				"pretty",

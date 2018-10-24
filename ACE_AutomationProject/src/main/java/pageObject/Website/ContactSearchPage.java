@@ -50,4 +50,10 @@ public class ContactSearchPage {
 	@FindBy(id="saveButton")
 	public WebElement btn_AddContact;
 	
+	@FindBy(xpath="//tbody/tr[1]/td[3]/a")
+	public WebElement tblResult;
+	
+	@FindBy(xpath="//*[text()='Follow']")
+	public WebElement ele_Follow;
+	
 }
