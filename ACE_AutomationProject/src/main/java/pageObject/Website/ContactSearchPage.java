@@ -26,10 +26,10 @@ public class ContactSearchPage {
 	@FindBy(xpath="//iframe")
 	public WebElement frame_CustomerSearch;
 	
-	@FindBy(xpath="//*[@id='j_id0:j_id82:firstName']")
+	@FindBy(xpath="//input[@placeholder='First Name']")
 	public WebElement txtbox_FirstName;
 	
-	@FindBy(xpath="//*[@id='j_id0:j_id82:lastName']")
+	@FindBy(xpath="//input[@placeholder='Last Name']")
 	public WebElement txtbox_LastName;
 	
 	@FindBy(id="searchButton")
@@ -38,10 +38,10 @@ public class ContactSearchPage {
 	@FindBy(id="newContactButton")
 	public WebElement btn_NewContact;
 	
-	@FindBy(xpath="//*[@id='j_id0:searchTable']/thead/tr/th/div")
+	@FindBy(xpath="//table[contains(@id,'searchTable')]/thead/tr/th")
 	public WebElement grid_Headers;
 	
-	@FindAll(@FindBy(xpath="//*[@id='j_id0:searchTable']/tbody/tr[1]/td"))
+	@FindAll(@FindBy(xpath="//table[contains(@id,'searchTable')]/tbody/tr[2]/td"))
 	public List<WebElement> grid_Results;
 	
 	@FindBy(id="requiredFireldFirstNameMessage")
