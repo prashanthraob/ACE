@@ -149,7 +149,7 @@ public class ContactSearchLib{
 
 
 	public void clickContactSearchTab() {
-		WebDriverWait wait = new WebDriverWait(driver, 60);
+		WebDriverWait wait = new WebDriverWait(driver, 120);
 		WebElement element = wait.until(ExpectedConditions.elementToBeClickable(contactSearchPage.tab_ContactSearch));
 		element.click();
 	}
