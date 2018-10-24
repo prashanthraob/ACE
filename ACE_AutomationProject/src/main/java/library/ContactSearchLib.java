@@ -65,7 +65,7 @@ public class ContactSearchLib{
 	public void verifyLastNameError() {
 		driver.switchTo().frame(contactSearchPage.frame_CustomerSearch);
 		try {
-			if (contactSearchPage.error_LastName.getText() == "Please fill last name") {
+			if (contactSearchPage.error_LastName.getText().equals("Please fill last name")) {
 				System.out.println("Error Message for Last Name verified");
 			}else
 				throw new RuntimeException("Error: last name error not displayed");
@@ -143,8 +143,9 @@ public class ContactSearchLib{
 //		driver.switchTo().defaultContent();
 //	}
 	
-	public void verifyNewContactEnabled() {
+	public void verifyNewContactEnabled() throws InterruptedException {
 		driver.switchTo().frame(contactSearchPage.frame_CustomerSearch);
+		Thread.sleep(10000);
 		if(contactSearchPage.btn_NewContact.isEnabled())
 			System.out.println("New contact button verified.");
 		else
