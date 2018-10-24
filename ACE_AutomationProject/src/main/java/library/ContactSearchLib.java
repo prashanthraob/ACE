@@ -75,10 +75,11 @@ public class ContactSearchLib{
 		driver.switchTo().defaultContent();
 	}
 	
-	public void enterFirstAndLastName(String firstName, String lastName) {
+	public void enterFirstAndLastName(String firstName, String lastName) throws InterruptedException {
 		driver.switchTo().frame(contactSearchPage.frame_CustomerSearch);
 		this.enterFirstName(firstName);
 		this.enterLastName(lastName);
+		Thread.sleep(8000);
 		driver.switchTo().defaultContent();
 	}
 
@@ -89,10 +90,15 @@ public class ContactSearchLib{
 			WebElement fName = i.next();
 			WebElement lName = i.next();
 			try {
-				if(fName.getText() == firstName && lName.getText() == lastName) {
+				System.out.println(fName.getText() + " " + lName.getText());
+				if(fName.getText().equals(firstName) || lName.getText().equals(lastName)) {
 					System.out.println("Verified the contacts Displayed");
-					i.next().click();
+					Thread.sleep(10000);
+					WebElement link = i.next().findElement(By.tagName("a"));
+					link.click();
+					Thread.sleep(10000);
 					i.next();
+					break;
 				}else
 					throw new RuntimeException("Error: Contacts not verified");
 			} catch(Exception e) {
@@ -156,10 +162,11 @@ public class ContactSearchLib{
 
 	//Following login code is temporary and has to be rearranged to login page
 
-	public void login() {
+	public void login() throws InterruptedException {
 		driver.get("https://login.salesforce.com");
 		driver.findElement(By.id("username")).sendKeys("dsaishankar@deloitte.com");
 		driver.findElement(By.id("password")).sendKeys("Coffee@55");
 		driver.findElement(By.id("Login")).click();
+		Thread.sleep(15000);
 	}
 }
