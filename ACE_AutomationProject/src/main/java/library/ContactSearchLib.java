@@ -41,6 +41,7 @@ public class ContactSearchLib{
 		driver.switchTo().frame(contactSearchPage.frame_CustomerSearch);
 		contactSearchPage.btn_Search.click();
 		driver.switchTo().defaultContent();
+		library.takeScreenshot(path, "Passed_Search");
 	}
 
 	public void clickNewContactButton() {
@@ -81,6 +82,7 @@ public class ContactSearchLib{
 		this.enterLastName(lastName);
 		Thread.sleep(8000);
 		driver.switchTo().defaultContent();
+		library.takeScreenshot(path, "Passed_Names");
 	}
 
 	public void verifyContactsDisplayed(String firstName, String lastName) {
@@ -98,9 +100,12 @@ public class ContactSearchLib{
 					link.click();
 					Thread.sleep(10000);
 					i.next();
+					library.takeScreenshot(path, "Passed_Verfication");
 					break;
-				}else
+				}else {
+					library.takeScreenshot(path, "Failed_Verification");
 					throw new RuntimeException("Error: Contacts not verified");
+			}
 			} catch(Exception e) {
 				e.printStackTrace();
 			}
@@ -159,6 +164,7 @@ public class ContactSearchLib{
 		WebDriverWait wait = new WebDriverWait(driver, 120);
 		WebElement element = wait.until(ExpectedConditions.elementToBeClickable(contactSearchPage.tab_ContactSearch));
 		element.click();
+		library.takeScreenshot(path, "Passed_ContactSearch");
 	}
 
 	//Following login code is temporary and has to be rearranged to login page
@@ -167,7 +173,9 @@ public class ContactSearchLib{
 		driver.get("https://login.salesforce.com");
 		driver.findElement(By.id("username")).sendKeys("dsaishankar@deloitte.com");
 		driver.findElement(By.id("password")).sendKeys("Coffee@55");
+		library.takeScreenshot(path, "Passed_Login");
 		driver.findElement(By.id("Login")).click();
 		Thread.sleep(15000);
+		library.takeScreenshot(path, "Passed_Home");
 	}
 }
