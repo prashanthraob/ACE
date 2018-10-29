@@ -1,0 +1,74 @@
+{
+  "providerOrganizations":[{    
+      "ustaOrg":{
+            "name":"Org Name",
+            "address": {
+            "country": {
+              "isocode": "US",
+              "name": "United States"
+            },
+            "formattedAddress": "6701 Hoover Road, Indianapolis, Indiana, 46260",
+            "id": "8796819652631",
+            "line1": "6701 Hoover Road",
+            "postalCode": "46260",
+            "region": {
+              "countryIso": "US",
+              "isocode": "US-IN",
+              "isocodeShort": "IN",
+              "name": "Indiana"
+            },
+            "shippingAddress": false,
+            "town": "Indianapolis",
+            "visibleInAddressBook": true
+            }
+          },
+            "outSideOrgName":"OutSideOrg Name"
+    }],
+  "programType": "Schools",
+  "name": "Program 1",
+  "description": "program 1 description",
+  "externalLink": "www.netgen.usta.com",
+  "linkDescription": "Net Gen Link",
+  "programAccess": "Private",
+  "languagesOffered": [
+        "English",
+        "Spanish"
+      ],
+    
+  "locationOption":"SchoolIndicated",
+  "facilities": [
+        {
+         
+          "facilityId": "11300MONTGOMERYBLVD.NE-NM-87111-2602",
+          "isPrimary": false
+        }
+      ],
+    "address":[{
+            "country": {
+              "isocode": "US",
+              "name": "United States"
+            },
+            "formattedAddress": "24856 W. Eames St., Illinois, Channahon, 60410",
+            "id": "8796819685399",
+            "line1": "24856 W. Eames St.",
+      "line2": "Eames St.",
+            "postalCode": "60410",
+            "region": {
+              "countryIso": "US",
+              "isocode": "US-IL",
+              "isocodeShort": "IL",
+              "name": "Illinois"
+            },
+            "shippingAddress": false,
+            "town": "Channahon",
+            "visibleInAddressBook": true
+          }],
+      
+
+  "programBeginDate":"2018-02-26T18:30:00+0000",
+  "programEndDate":"2018-08-26T18:30:00+0000",
+  "moreInfo":"Some additional information",
+  "schoolLevel":["Elementary","Middle","High"],
+  "participants": 22,
+  "programCreateStep":1
+}

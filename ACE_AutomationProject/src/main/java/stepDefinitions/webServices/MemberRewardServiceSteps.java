@@ -1,9 +1,13 @@
 package stepDefinitions.webServices;
 
 import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.equalTo;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.List;
+
+import org.json.simple.JSONObject;
 
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -63,6 +67,54 @@ public class MemberRewardServiceSteps {
 				throw new RuntimeException("Error: Response Content validation Failed");
 			}
 	}
+	
+	@Given("^I want to validate create data api with headers$")
+	public void i_want_to_validate_create_data_api_with_headers() throws Throwable {
+	  // Write code here that turns the phrase above into concrete actions	
+	  request = given();
+	  request.header("Content-Type","application/json");
+	}
+
+
+	@When("^I want to create JSON object for request body$")
+	public void i_want_to_create_JSON_object_for_request_body() throws Throwable {
+	  // Write code here that turns the phrase above into concrete actions
+	  JSONObject json = new JSONObject();
+	  json.put("text", "hero");
+	  json.put("latitude", "40.7127837");
+	  json.put("longitude", "-74.00594130000002");
+	  json.put("distance", "10000");
+	  json.put("sortCriteria", "distanceAsc"); 
+	  request.body(json);
+	  
+	}
+
+	@When("^I want to perform POST call to \"([^\"]*)\"$")
+	public void i_want_to_perform_POST_call_to(String arg1) throws Throwable {
+	  // Write code here that turns the phrase above into concrete actions
+		response = request.post("https://postman-echo.com/post");
+	  
+	}
+
+
+	@Then("^I want to verify response code as \"([^\"]*)\"$")
+	public void i_want_to_verify_response_code_as(String arg1) throws Throwable {
+	  // Write code here that turns the phrase above into concrete actions
+		System.out.println(response.getStatusCode());
+	//  res.then().assertThat().statusCode(200);
+		response.then().assertThat().statusCode(200).and().body("data.text", equalTo("hero"));
+	}
+
+	@Given("^I want to input request body payload as a JSON file \"([^\"]*)\"$")
+	public void i_want_to_input_request_body_payload_as_a_JSON_file(String inputFile) throws Throwable {
+	    // Write code here that turns the phrase above into concrete actions
+		
+		File file = new File(System.getProperty("user.dir")+ inputFile);
+		request.body(file).with().contentType("application/json");
+		
+	    
+	}
+
 
 }
 
