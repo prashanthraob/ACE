@@ -1,8 +1,7 @@
-@website 
+@website
 Feature: Verification for member rewards scenarios 
 
-Scenario:
-002 Verify that Users can receive incentives for choosing a designated lower-cost provider (Member rewards) 
+Scenario: 002 Verify that Users can receive incentives for choosing a designated lower-cost provider (Member rewards) 
 
 	Given User logins in to member connect Application with "sumani@memberconnect.v3" and "Aug#2018" 
 	When  User navigates to "Customer Search" tab. 
@@ -16,8 +15,7 @@ Scenario:
 	
 	############################################ End of Scenario 002 #########################################################################
 	
-Scenario:
-003 Verify that Users can receive incentives for choosing a designated lower-cost provider (Member rewards) 
+Scenario: 003 Verify that Users can receive incentives for choosing a designated lower-cost provider (Member rewards) 
 
 	Given User logins in to member connect Application with "sumani@memberconnect.v3" and "Aug#2018" 
 	When  User navigates to "Customer Search" tab. 

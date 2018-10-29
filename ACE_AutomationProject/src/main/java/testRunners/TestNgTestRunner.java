@@ -21,7 +21,7 @@ import utils.XlUtil;
  */
 
 @CucumberOptions(
-		features = "src/main/java/Features/",
+		features = "src/main/java/features/",
 		glue = {"stepDefinitions"},
 		tags = {"@US2"},
 		dryRun = false,
