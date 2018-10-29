@@ -35,7 +35,7 @@ public class ContactSearchSteps {
 	@When("^User enters the First Name and Last Name and clicks on Search$")
 	public void user_enters_the_First_Name_and_Last_Name_and_clicks_on_Search() throws Throwable {
 	    // Write code here that turns the phrase above into concrete actions
-	    contactSearchLib.enterFirstAndLastName("Sai Shankar", "Devarasetty");
+	    contactSearchLib.enterFirstAndLastName("sai shankar", "devarasetty");
 	    contactSearchLib.clickSearchButton();
 	}
 
@@ -69,7 +69,7 @@ public class ContactSearchSteps {
 	@Then("^User should verify the contacts displayed$")
 	public void user_should_verify_the_contacts_displayed() throws Throwable {
 	    // Write code here that turns the phrase above into concrete actions
-	    contactSearchLib.verifyContactsDisplayed("Sai Shankar", "Devarasetty");
+	    contactSearchLib.verifyContactsDisplayed("sai Shankar", "devarasetty");
 	}
 	
 	@Then("^User is in the contact search page$")
@@ -80,7 +80,7 @@ public class ContactSearchSteps {
 	@When("^User enters the First Name and clicks on Search$")
 	public void user_enters_the_First_Name_and_clicks_on_Search() throws Throwable {
 	    // Write code here that turns the phrase above into concrete actions
-	    contactSearchLib.enterOnlyFirstName("Sai Shankar");
+	    contactSearchLib.enterOnlyFirstName("sai shankar");
 	    contactSearchLib.clickSearchButton();
 	}
 
