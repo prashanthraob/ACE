@@ -13,10 +13,11 @@ public class HomePage {
 		PageFactory.initElements(driver, this);
 	}
 
-		
-
 	@FindBy(xpath = "//a[@class='slds-context-bar__icon-action']")
 	public WebElement dropDown_contacts;
+	
+	@FindBy(xpath="//*[@id='oneHeader']/div[3]/div/div[1]/div[3]/div/button")
+	public WebElement dropDown;
 
 	@FindBy(xpath = "//span[text()='Customer Search']")
 	public WebElement customerSearch;
@@ -26,6 +27,9 @@ public class HomePage {
 
 	@FindBy(xpath = "(//a[@title='Erica Schiff'])[1]")
 	public WebElement EricaSchiff;
+	
+	@FindBy(xpath="//*[@id='navMenuList']//span[text()='Contact Search']")
+	public WebElement contactSearch;
 
 	/*
 	 * @FindBy(id="costCalculatorOption") public WebElement tab_CostCalcator;

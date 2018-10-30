@@ -1,12 +1,9 @@
 package stepDefinitions.functional;
 
 import java.util.List;
-import java.util.Map;
-
 import org.openqa.selenium.WebDriver;
 
 import cucumber.api.DataTable;
-import cucumber.api.PendingException;
 import cucumber.api.java.en.Then;
 import library.PlanAndBenefitsLib;
 

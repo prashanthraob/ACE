@@ -2,18 +2,13 @@ package library;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 
-import com.thoughtworks.selenium.webdriven.commands.IsElementPresent;
-
 import context.TestContext;
-import cucumber.api.DataTable;
 import pageObject.Website.PlanAndBenefitsPage;
 
 public class PlanAndBenefitsLib {

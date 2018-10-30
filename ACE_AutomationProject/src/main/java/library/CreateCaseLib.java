@@ -1,20 +1,10 @@
 package library;
 
-import javax.management.RuntimeErrorException;
-
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import com.gargoylesoftware.htmlunit.javascript.background.JavaScriptExecutor;
-
 import context.TestContext;
 import pageObject.Website.CaseCreatePage;
-import pageObject.Website.ContactSearchPage;
 import utils.Wait;
 
 public class CreateCaseLib {
@@ -25,7 +15,7 @@ public class CreateCaseLib {
 	CommonLib library;
 	Actions action;
 	CaseCreatePage caseCreatePage;
-	ContactSearchPage contactSearchPage;
+	//ContactSearchPage contactSearchPage;
 	String path = System.getProperty("EvidencePath");
 	Wait wait = new Wait();
 
@@ -34,69 +24,9 @@ public class CreateCaseLib {
 		testContext = context;
 		driver = context.getWebDriverManager().getDriver();
 		caseCreatePage = context.getPageObjectManager().getCaseCreatePage();
-		contactSearchPage = context.getPageObjectManager().getContactSearchPage();
+		//contactSearchPage = context.getPageObjectManager().getContactSearchPage();
 		library = lib;
 		action = context.action();
-	}
-	
-	public void login() throws Throwable {
-		driver.get("https://login.salesforce.com");
-		driver.findElement(By.id("username")).sendKeys("dsaishankar@deloitte.com");
-		driver.findElement(By.id("password")).sendKeys("Coffee@55");
-		driver.findElement(By.id("Login")).click();
-		Thread.sleep(15000);
-	}
-	
-	public void findContact(String lastName) throws Throwable {
-		WebDriverWait wait = new WebDriverWait(driver, 60);
-		wait.until(ExpectedConditions.visibilityOf(contactSearchPage.tab_ContactSearch));
-		WebElement ele = contactSearchPage.tab_ContactSearch;		
-		ele.click();
-		Thread.sleep(3000);
-		driver.switchTo().frame(contactSearchPage.frame_CustomerSearch);
-		wait.until(ExpectedConditions.visibilityOf(contactSearchPage.txtbox_LastName));
-		this.enterLastName(lastName);
-		driver.switchTo().defaultContent();
-		this.clickSearchButton();
-	}
-	
-	public void enterFirstName(String value) {
-		contactSearchPage.txtbox_FirstName.sendKeys(value);
-	}
-
-	public void enterLastName(String value) {
-		contactSearchPage.txtbox_LastName.sendKeys(value);
-	}
-
-	public void clickSearchButton() {
-		driver.switchTo().frame(contactSearchPage.frame_CustomerSearch);
-		contactSearchPage.btn_Search.click();
-		driver.switchTo().defaultContent();
-	}
-	
-	public void verifyContactDetails(String expText) {
-		driver.switchTo().frame(contactSearchPage.frame_CustomerSearch);
-		try {
-			if(contactSearchPage.tblResult.getText() == expText) {
-				System.out.println("Contact displayed successfully");
-			}
-		}catch(Exception e) {
-			e.printStackTrace();			
-		}			
-	}
-
-	public void clicksOnContact() {
-		
-		contactSearchPage.tblResult.click();
-		driver.switchTo().defaultContent();
-		
-	}
-
-	public void verifyContactDetailPage() {
-		
-		wait.waitForPageLoad(driver);
-		
-		contactSearchPage.ele_Follow.isDisplayed();
 	}
 	
 	public void fillCase(String fields,String Values) {

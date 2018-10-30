@@ -213,7 +213,6 @@ public class ManagePCPLib {
 		try {
 			wait.waitForPageLoad(driver);
 			WebElement reviewSeltn = managePCPPage.ReviewSelection_tag;
-			String txt = reviewSeltn.getText();
 			Assert.assertTrue(library.isElementPresent(reviewSeltn),
 					"Error: User Not able to navigate Update PCP popup");
 			library.takeScreenshot(path, "Update_PCP_PopUp");

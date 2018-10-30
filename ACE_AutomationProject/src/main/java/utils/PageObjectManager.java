@@ -2,6 +2,7 @@ package utils;
 
 import org.openqa.selenium.WebDriver;
 
+import pageObject.Website.AppLauncherPage;
 import pageObject.Website.CaseCreatePage;
 import pageObject.Website.ContactSearchPage;
 import pageObject.Website.CostCalculator;
@@ -33,6 +34,7 @@ public class PageObjectManager {
 	private PlanAndBenefitsPage planAndBenefitsPage;
 	private ContactSearchPage contactSearchPage;
 	private CaseCreatePage caseCreatePage;
+	private AppLauncherPage appLauncherPage;
 	
 	public WebDriver getDriver() {
 		return driver;
@@ -86,6 +88,10 @@ public class PageObjectManager {
 	public CaseCreatePage getCaseCreatePage() {
 		return (caseCreatePage == null) ? caseCreatePage = new CaseCreatePage(driver) : caseCreatePage;
 
+	}
+
+	public AppLauncherPage getAppLauncherPage() {
+		return (appLauncherPage == null) ? appLauncherPage = new AppLauncherPage(driver) : appLauncherPage;
 	}
 
 }

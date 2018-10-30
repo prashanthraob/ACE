@@ -62,7 +62,7 @@ public class ContactSearchLib{
 		this.enterFirstName(firstName);
 		driver.switchTo().defaultContent();
 	}
-	
+
 	public void verifyLastNameError() {
 		driver.switchTo().frame(contactSearchPage.frame_CustomerSearch);
 		try {
@@ -75,7 +75,7 @@ public class ContactSearchLib{
 		}
 		driver.switchTo().defaultContent();
 	}
-	
+
 	public void enterFirstAndLastName(String firstName, String lastName) throws InterruptedException {
 		driver.switchTo().frame(contactSearchPage.frame_CustomerSearch);
 		this.enterFirstName(firstName);
@@ -85,7 +85,7 @@ public class ContactSearchLib{
 		library.takeScreenshot(path, "Passed_Names");
 	}
 
-	public void verifyContactsDisplayed(String firstName, String lastName) {
+	public void verifyContactsDisplayed(String firstName, String lastName, String value) {
 		driver.switchTo().frame(contactSearchPage.frame_CustomerSearch);
 		java.util.Iterator<WebElement> i = contactSearchPage.grid_Results.iterator();
 		while(i.hasNext()) {
@@ -96,16 +96,24 @@ public class ContactSearchLib{
 				if(fName.getText().equals(firstName) || lName.getText().equals(lastName)) {
 					System.out.println("Verified the contacts Displayed");
 					Thread.sleep(10000);
-					WebElement link = i.next().findElement(By.tagName("a"));
-					link.click();
-					Thread.sleep(10000);
-					i.next();
-					library.takeScreenshot(path, "Passed_Verfication");
+					if(value.equals("Contacts")) {
+						WebElement link = i.next().findElement(By.tagName("a"));
+						link.click();
+						Thread.sleep(10000);
+						i.next();
+						library.takeScreenshot(path, "Passed_Verfication");
+					}else if(value.equals("Welcome")) {
+						i.next();
+						WebElement link = i.next().findElement(By.tagName("a"));
+						link.click();
+						Thread.sleep(10000);
+						library.takeScreenshot(path, "Passed_Verfication");
+					}
 					break;
 				}else {
 					library.takeScreenshot(path, "Failed_Verification");
 					throw new RuntimeException("Error: Contacts not verified");
-			}
+				}
 			} catch(Exception e) {
 				e.printStackTrace();
 			}
@@ -126,28 +134,28 @@ public class ContactSearchLib{
 		driver.switchTo().defaultContent();
 	}
 
-//	public void verifyNewContact(String firstName, String lastName) {
-//		try {
-//			driver.switchTo().frame(contactSearchPage.frame_CustomerSearch);
-//			if(contactSearchPage.btn_NewContact.getAttribute("disabled").equals("true")) {
-//				this.enterLastName(lastName);
-//				this.clickSearchButton();
-//				if(contactSearchPage.btn_NewContact.isEnabled()) {
-//					this.clickNewContactButton();
-//					Thread.sleep(5000);
-//					this.enterFirstName(firstName);
-//					this.enterLastName(lastName);
-//					this.clickAddContactButton();
-//				}else
-//					throw new RuntimeException("Error: New Contact button not enabled after first search");
-//			}else
-//				throw new RuntimeException("Error: New Contact button enabled before first search");
-//		}catch(Exception e) {
-//			e.printStackTrace();
-//		}
-//		driver.switchTo().defaultContent();
-//	}
-	
+	//	public void verifyNewContact(String firstName, String lastName) {
+	//		try {
+	//			driver.switchTo().frame(contactSearchPage.frame_CustomerSearch);
+	//			if(contactSearchPage.btn_NewContact.getAttribute("disabled").equals("true")) {
+	//				this.enterLastName(lastName);
+	//				this.clickSearchButton();
+	//				if(contactSearchPage.btn_NewContact.isEnabled()) {
+	//					this.clickNewContactButton();
+	//					Thread.sleep(5000);
+	//					this.enterFirstName(firstName);
+	//					this.enterLastName(lastName);
+	//					this.clickAddContactButton();
+	//				}else
+	//					throw new RuntimeException("Error: New Contact button not enabled after first search");
+	//			}else
+	//				throw new RuntimeException("Error: New Contact button enabled before first search");
+	//		}catch(Exception e) {
+	//			e.printStackTrace();
+	//		}
+	//		driver.switchTo().defaultContent();
+	//	}
+
 	public void verifyNewContactEnabled() throws InterruptedException {
 		driver.switchTo().frame(contactSearchPage.frame_CustomerSearch);
 		Thread.sleep(10000);
@@ -157,7 +165,7 @@ public class ContactSearchLib{
 			throw new RuntimeException("Error: New Contact button not enabled after first search");
 		driver.switchTo().defaultContent();
 	}
-	
+
 
 
 	public void clickContactSearchTab() {
@@ -177,5 +185,26 @@ public class ContactSearchLib{
 		driver.findElement(By.id("Login")).click();
 		Thread.sleep(15000);
 		library.takeScreenshot(path, "Passed_Home");
+		//driver.findElement(By.xpath("//header[@id='oneHeader']/div[3]/div/div/div/nav/button/div/div")).click();
+		//System.out.println("Launcher clicked");
+		//Thread.sleep(20000);
+	}
+
+	public void verifyWelcomeText() {
+		
+		driver.switchTo().frame(contactSearchPage.welcomeFrame);
+		try {
+			contactSearchPage.txt_Welcome.sendKeys("Hello");
+			Thread.sleep(3000);
+			System.out.println("Starts"+contactSearchPage.txt_Welcome.getText()+"Ends");
+		if(contactSearchPage.txt_Welcome.getAttribute("value").equals("Hello")) {
+			System.out.println("Welcome Text Verified!");
+		}else {
+			throw new RuntimeException("Error Welcome Text not verified");
+		}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		driver.switchTo().defaultContent();
 	}
 }

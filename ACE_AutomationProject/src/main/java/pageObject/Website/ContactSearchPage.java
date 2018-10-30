@@ -23,7 +23,7 @@ public class ContactSearchPage {
 	//Following elements fall under a frame
 	//frame="//iframe"
 	
-	@FindBy(xpath="//iframe")
+	@FindBy(xpath="//div[@class='content']/iframe")
 	public WebElement frame_CustomerSearch;
 	
 	@FindBy(xpath="//input[@placeholder='First Name']")
@@ -56,4 +56,9 @@ public class ContactSearchPage {
 	@FindBy(xpath="//*[text()='Follow']")
 	public WebElement ele_Follow;
 	
+	@FindBy(xpath="//div[@class='slds-template_iframe slds-card']/iframe")
+	public WebElement welcomeFrame;
+	
+	@FindBy(xpath="//form/input[2]")
+	public WebElement txt_Welcome;
 }

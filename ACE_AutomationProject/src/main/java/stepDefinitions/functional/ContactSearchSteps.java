@@ -3,14 +3,20 @@ package stepDefinitions.functional;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import library.AppLauncherLib;
 import library.ContactSearchLib;
+import library.HomeLib;
 
 public class ContactSearchSteps {
 	
 	ContactSearchLib contactSearchLib;
+	AppLauncherLib appLauncherLib;
+	HomeLib homeLib;
 	
-	public ContactSearchSteps(ContactSearchLib contactLib) {
+	public ContactSearchSteps(ContactSearchLib contactLib, AppLauncherLib appLib, HomeLib homLib) {
 		contactSearchLib = contactLib;
+		appLauncherLib = appLib;
+		homeLib = homLib;
 	}
 	
 	@Given("^User logins into the application$")
@@ -66,10 +72,10 @@ public class ContactSearchSteps {
 	
 	
 
-	@Then("^User should verify the contacts displayed$")
-	public void user_should_verify_the_contacts_displayed() throws Throwable {
+	@Then("^User should verify the contacts displayed with \"([^\"]*)\"$")
+	public void user_should_verify_the_contacts_displayed(String validation) throws Throwable {
 	    // Write code here that turns the phrase above into concrete actions
-	    contactSearchLib.verifyContactsDisplayed("sai Shankar", "devarasetty");
+	    contactSearchLib.verifyContactsDisplayed("sai Shankar", "devarasetty", validation);
 	}
 	
 	@Then("^User is in the contact search page$")
@@ -88,5 +94,28 @@ public class ContactSearchSteps {
 	public void user_should_be_able_to_verify_the_error_message() throws Throwable {
 	    // Write code here that turns the phrase above into concrete actions
 	    contactSearchLib.verifyLastNameError();
+	}
+	
+	@Given("^User logins into the application as Sales Console$")
+	public void user_logins_into_the_application_as_Sales_Console() throws Throwable {
+	    // Write code here that turns the phrase above into concrete actions
+		contactSearchLib.login();
+		appLauncherLib.clickAppLauncherIcon();
+		appLauncherLib.clickSalesConsole();
+		Thread.sleep(15000);
+	}
+
+	@When("^User navigates to the contact search page using dropdown$")
+	public void user_navigates_to_the_contact_search_page_using_dropdown() throws Throwable {
+	    // Write code here that turns the phrase above into concrete actions
+	    homeLib.clickDropDown();
+	    homeLib.clickContactSearchFromDropDown();
+	}
+
+
+	@Then("^User should be able to see welcome test$")
+	public void user_should_be_able_to_see_welcome_test() throws Throwable {
+	    // Write code here that turns the phrase above into concrete actions
+	    contactSearchLib.verifyWelcomeText();
 	}
 }
