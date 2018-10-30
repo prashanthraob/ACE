@@ -17,6 +17,18 @@ Examples:
     | testID  |
     | 83804824|
    
+	Scenario: Valiadte post man api by performing POST Call with Json object 
+	Given I want to validate create data api with headers
+	And I want to create JSON object for request body
+	When I want to perform POST call to "https://postman-echo.com/post"
+	Then I want to verify response code as "200"
+	
+	
+	Scenario: Valiadte post man api by performing POST Call with Json file
+	Given I want to validate create data api with headers
+	And I want to input request body payload as a JSON file "\\test.json"
+	When I want to perform POST call to "https://postman-echo.com/post"
+	Then I want to verify response code as "200"  
     
 
 
