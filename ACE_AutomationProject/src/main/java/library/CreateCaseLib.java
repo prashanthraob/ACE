@@ -1,8 +1,12 @@
 package library;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 import context.TestContext;
 import pageObject.Website.CaseCreatePage;
 import utils.Wait;
@@ -39,6 +43,8 @@ public class CreateCaseLib {
 			switch(arrFields[i].toUpperCase())
 			{
 			case "STATUS" :
+				WebDriverWait wait = new WebDriverWait(driver, 120);
+				wait.until(ExpectedConditions.elementToBeClickable(caseCreatePage.selbox_Status));
 				Select sel_Status = new Select(caseCreatePage.selbox_Status);
 				sel_Status.selectByValue(arrValues[i]);
 				System.out.println("Status select from select box");

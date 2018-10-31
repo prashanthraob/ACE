@@ -75,7 +75,7 @@ public class ContactSearchSteps {
 	@Then("^User should verify the contacts displayed with \"([^\"]*)\"$")
 	public void user_should_verify_the_contacts_displayed(String validation) throws Throwable {
 	    // Write code here that turns the phrase above into concrete actions
-	    contactSearchLib.verifyContactsDisplayed("sai Shankar", "devarasetty", validation);
+	    contactSearchLib.verifyContactsDisplayed("Sai Shankar", "Devarasetty", validation);
 	}
 	
 	@Then("^User is in the contact search page$")

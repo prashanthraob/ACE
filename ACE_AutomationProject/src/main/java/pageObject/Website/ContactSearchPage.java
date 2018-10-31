@@ -41,7 +41,7 @@ public class ContactSearchPage {
 	@FindBy(xpath="//table[contains(@id,'searchTable')]/thead/tr/th")
 	public WebElement grid_Headers;
 	
-	@FindAll(@FindBy(xpath="//table[contains(@id,'searchTable')]/tbody/tr[2]/td"))
+	@FindAll(@FindBy(xpath="//table[contains(@id,'searchTable')]/tbody/tr/td"))
 	public List<WebElement> grid_Results;
 	
 	@FindBy(id="requiredFireldFirstNameMessage")
